@@ -3,6 +3,7 @@ extends Node
 @onready var rng = RandomNumberGenerator.new()
 var wins = 0.0
 var nextPowerup = [2, 4, 6, 8, 10, 12, 14, 16, 18]
+# var nextPowerup = [10, 20, 30, 40, 60, 80, 160, 320, 640]
 var nextPowerupIndex = 0
 
 # Called when the node enters the scene tree for the first time.
