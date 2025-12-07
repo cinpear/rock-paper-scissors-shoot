@@ -1,11 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7pfh5uv4qil7"]
+[gd_scene load_steps=3 format=3 uid="uid://b7pfh5uv4qil7"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_l3qlv"]
+[ext_resource type="PackedScene" uid="uid://c222tr58xaie0" path="res://powerup.tscn" id="2_p1klo"]
 
 [node name="Control" type="Node"]
 script = ExtResource("1_l3qlv")
 
-[node name="Label5" type="Label" parent="."]
+[node name="game" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label5" type="Label" parent="game"]
+layout_mode = 0
 offset_left = 670.0
 offset_top = 435.0
 offset_right = 1244.0
@@ -14,7 +22,8 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="."]
+[node name="Label4" type="Label" parent="game"]
+layout_mode = 0
 offset_left = 798.0
 offset_top = 123.0
 offset_right = 1115.0
@@ -23,36 +32,38 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="game"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -465.0
-offset_top = 68.0
-offset_right = 464.0
-offset_bottom = 475.0
+offset_left = 475.0
+offset_top = 588.0
+offset_right = 1404.0
+offset_bottom = 995.0
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="Button" type="Button" parent="game/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "Rock"
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
+[node name="Button2" type="Button" parent="game/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "Paper"
 
-[node name="Button3" type="Button" parent="HBoxContainer"]
+[node name="Button3" type="Button" parent="game/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "Scissors"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="game"]
+layout_mode = 0
 offset_left = 36.0
 offset_top = 905.0
 offset_right = 461.0
@@ -62,7 +73,8 @@ text = "Wins: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="game"]
+layout_mode = 0
 offset_left = 1489.0
 offset_top = 48.0
 offset_right = 1866.0
@@ -73,7 +85,8 @@ text = "Pick your move!
 Goal: Reach 1000 wins"
 autowrap_mode = 2
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="game"]
+layout_mode = 0
 offset_left = 1458.0
 offset_top = 843.0
 offset_right = 1894.0
@@ -84,6 +97,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.576471)
+
+[node name="powerup" parent="." instance=ExtResource("2_p1klo")]
+visible = false
+
+[connection signal="pressed" from="game/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="game/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="game/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]

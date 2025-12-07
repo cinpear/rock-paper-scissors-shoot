@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://c222tr58xaie0"]
+
+[ext_resource type="Script" path="res://powerup.gd" id="1_s4k80"]
+
+[node name="powerup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_s4k80")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 303.0
+offset_right = 1487.0
+offset_bottom = 770.0
+theme_override_constants/separation = 40
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Button"]
+layout_mode = 0
+offset_right = 326.0
+offset_bottom = 467.0
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Button2"]
+layout_mode = 0
+offset_right = 326.0
+offset_bottom = 467.0
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Button3"]
+layout_mode = 0
+offset_right = 326.0
+offset_bottom = 467.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 167.0
+offset_right = 1227.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 60
+text = "Pick your powerup!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 817.0
+offset_top = 808.0
+offset_right = 1102.0
+offset_bottom = 905.0
+theme_override_font_sizes/font_size = 40
+text = "Close"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
