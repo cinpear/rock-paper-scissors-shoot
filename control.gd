@@ -2,9 +2,8 @@ extends Node
 
 @onready var rng = RandomNumberGenerator.new()
 var wins = 0.0
-var nextPowerup = [2, 20, 30, 40, 60, 80, 160, 320, 640]
+var nextPowerup = [2, 4, 6, 8, 10, 12, 14, 16, 18]
 var nextPowerupIndex = 0
-var allPowerupsBought = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,23 +27,26 @@ func update_wins():
 	$game/Label.text = "Wins: " + str(wins)
 	if wins >= 1000:
 		print("You win!")
-	if allPowerupsBought:
+	if (global.numPowerup == 9):
+		print("allbought")
 		return
+	else:
+		$game/Label3.text = "Next Power Up: " + str(nextPowerup[nextPowerupIndex] - wins) + " wins"
 	if wins >= nextPowerup[nextPowerupIndex]:
 		roll_powerup()
-	$game/Label3.text = "Next Power Up: " + str(nextPowerup[nextPowerupIndex] - wins) + " wins"
 
 func roll_powerup():
 	print("here")
 	$powerup.visible = true
 	$ColorRect.visible = true
-	if nextPowerupIndex < 9:
+	if global.numPowerup == 9:
+		$game/Label3.text = "Next Power Up: -"
+	else:
 		nextPowerupIndex += 1
-		if nextPowerupIndex == 9:
-			allPowerupsBought = true
-			$game/Label3.text = "Next Power Up: -"
-		else:
+		if nextPowerupIndex < 9:
 			$game/Label3.text = "Next Power Up: " + str(nextPowerup[nextPowerupIndex] - wins) + " wins"
+		else:
+			$game/Label3.text = "Next Power Up: -"
 
 # Chose rock
 func _on_button_pressed() -> void:
@@ -53,22 +55,22 @@ func _on_button_pressed() -> void:
 	if (gun <= global.gunChance):
 		$game/Label4.text = "Gun! 🔫"
 		$game/Label5.text = "Win!"
-		wins += 1.0
+		wins += 2.0
 	# rock
 	elif (move == 1):
 		$game/Label4.text = "Rock"
 		$game/Label5.text = "Tie"
-		wins += 1.0
+		wins += global.tieAmount
 	# paper
 	elif (move == 2):
 		$game/Label4.text = "Paper"
 		$game/Label5.text = "Loss"
-		wins -= 1.0
+		wins += global.lossAmount
 	# scissors
 	else:
 		$game/Label4.text = "Scissors"
 		$game/Label5.text = "Win!"
-		wins += 2.0
+		wins += global.winAmount
 	update_wins()
 	pause_one_sec()
 
@@ -79,19 +81,19 @@ func _on_button_2_pressed() -> void:
 	if (gun <= global.gunChance):
 		$game/Label4.text = "Gun! 🔫"
 		$game/Label5.text = "Win!"
-		wins += 1.0
+		wins += global.winAmount
 	elif (move == 1):
 		$game/Label4.text = "Rock"
 		$game/Label5.text = "Win!"
-		wins += 1.0
+		wins += global.winAmount
 	elif (move == 2):
 		$game/Label4.text = "Paper"
 		$game/Label5.text = "Tie"
-		wins += 0.5
+		wins += global.tieAmount
 	else:
 		$game/Label4.text = "Scissors"
 		$game/Label5.text = "Loss"
-		wins -= 1.0
+		wins += global.lossAmount
 	update_wins()
 	pause_one_sec()
 
@@ -102,18 +104,18 @@ func _on_button_3_pressed() -> void:
 	if (gun <= global.gunChance):
 		$game/Label4.text = "Gun! 🔫"
 		$game/Label5.text = "Win!"
-		wins += 1.0
+		wins += global.winAmount
 	elif (move == 1):
 		$game/Label4.text = "Rock"
 		$game/Label5.text = "Loss"
-		wins -= 1.0
+		wins += global.lossAmount
 	elif (move == 2):
 		$game/Label4.text = "Paper"
 		$game/Label5.text = "Win!"
-		wins += 1.0
+		wins += global.winAmount
 	else:
 		$game/Label4.text = "Scissors"
 		$game/Label5.text = "Tie"
-		wins += 0.5
+		wins += global.tieAmount
 	update_wins()
 	pause_one_sec()
