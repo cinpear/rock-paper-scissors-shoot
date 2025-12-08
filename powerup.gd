@@ -64,6 +64,29 @@ func close():
 func _on_close_button_pressed() -> void:
 	close()
 
+func addPowerup(num):
+	if num == 0:
+		global.tieAmount = 1.0
+	elif num == 1:
+		global.lossAmount = -0.5
+	elif num == 2:
+		# chain bonus
+		pass
+	elif num == 3:
+		global.gunChance = 10
+	elif num == 4:
+		# +20% chance to make a loss a tie
+		pass
+	elif num == 5:
+		# +10% chance to make a tie a win
+		pass
+	elif num == 6:
+		global.winMult = 2.0
+	elif num == 7:
+		global.lossMult = 0.5
+	elif num == 8:
+		global.waitTime = 0.5
+
 func _on_button_pressed() -> void:
 	global.numPowerup += 1
 	if powerup[0] != 10:
@@ -72,6 +95,7 @@ func _on_button_pressed() -> void:
 		global.powerupBought[powerup[1]] = false
 	if powerup[2] != 10:
 		global.powerupBought[powerup[2]] = false
+	addPowerup(powerup[0])
 	close()
 
 func _on_button_2_pressed() -> void:
@@ -82,6 +106,7 @@ func _on_button_2_pressed() -> void:
 		global.powerupBought[powerup[1]] = true
 	if powerup[2] != 10:
 		global.powerupBought[powerup[2]] = false
+	addPowerup(powerup[1])
 	close()
 
 func _on_button_3_pressed() -> void:
@@ -92,4 +117,5 @@ func _on_button_3_pressed() -> void:
 		global.powerupBought[powerup[1]] = false
 	if powerup[2] != 10:
 		global.powerupBought[powerup[2]] = true
+	addPowerup(powerup[2])
 	close()

@@ -19,7 +19,7 @@ func pause_one_sec():
 	$game/HBoxContainer/Button.disabled = true
 	$game/HBoxContainer/Button2.disabled = true
 	$game/HBoxContainer/Button3.disabled = true
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(global.waitTime).timeout
 	$game/HBoxContainer/Button.disabled = false
 	$game/HBoxContainer/Button2.disabled = false
 	$game/HBoxContainer/Button3.disabled = false
