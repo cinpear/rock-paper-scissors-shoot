@@ -68,17 +68,34 @@ func _on_button_pressed() -> void:
 		chainWin = 0
 	# paper
 	elif (move == 2):
-		$game/Label4.text = "Paper"
-		$game/Label5.text = "Loss"
-		wins += global.lossAmount * global.lossMult
-		chainWin = 0
+		if global.lossToTieChance > 0:
+			var chance = rng.randi_range(1, 10)
+			if chance <= global.lossToTieChance:
+				$game/Label4.text = "Paper"
+				$game/Label5.text = "Loss -> Tie"
+				wins += global.tieAmount * global.winMult
+				chainWin = 0
+		else:
+			$game/Label4.text = "Paper"
+			$game/Label5.text = "Loss"
+			wins += global.lossAmount * global.lossMult
+			chainWin = 0
 	# scissors
 	else:
-		$game/Label4.text = "Scissors"
-		$game/Label5.text = "Win!"
-		wins += global.winAmount * global.winMult + chainWin
-		if global.chainBonus:
-			chainWin += 1
+		if global.tieToWinChance > 0:
+			var chance = rng.randi_range(1, 10)
+			if chance <= global.tieToWinChance:
+				$game/Label4.text = "Scissors"
+				$game/Label5.text = "Tie -> Win!"
+				wins += global.winAmount * global.winMult + chainWin
+				if global.chainBonus:
+					chainWin += 1
+		else:
+			$game/Label4.text = "Scissors"
+			$game/Label5.text = "Win!"
+			wins += global.winAmount * global.winMult + chainWin
+			if global.chainBonus:
+				chainWin += 1
 	update_wins()
 	pause_one_sec()
 
@@ -99,15 +116,32 @@ func _on_button_2_pressed() -> void:
 		if global.chainBonus:
 			chainWin += 1
 	elif (move == 2):
-		$game/Label4.text = "Paper"
-		$game/Label5.text = "Tie"
-		wins += global.tieAmount * global.winMult
-		chainWin = 0
+		if global.tieToWinChance > 0:
+			var chance = rng.randi_range(1, 10)
+			if chance <= global.tieToWinChance:
+				$game/Label4.text = "Paper"
+				$game/Label5.text = "Tie -> Win!"
+				wins += global.winAmount * global.winMult + chainWin
+				if global.chainBonus:
+					chainWin += 1
+		else:
+			$game/Label4.text = "Paper"
+			$game/Label5.text = "Tie"
+			wins += global.tieAmount * global.winMult
+			chainWin = 0
 	else:
-		$game/Label4.text = "Scissors"
-		$game/Label5.text = "Loss"
-		wins += global.lossAmount * global.lossMult
-		chainWin = 0
+		if global.lossToTieChance > 0:
+			var chance = rng.randi_range(1, 10)
+			if chance <= global.lossToTieChance:
+				$game/Label4.text = "Scissors"
+				$game/Label5.text = "Loss -> Tie"
+				wins += global.tieAmount * global.winMult
+				chainWin = 0
+		else:
+			$game/Label4.text = "Scissors"
+			$game/Label5.text = "Loss"
+			wins += global.lossAmount * global.lossMult
+			chainWin = 0
 	update_wins()
 	pause_one_sec()
 
@@ -122,10 +156,18 @@ func _on_button_3_pressed() -> void:
 		if global.chainBonus:
 			chainWin += 1
 	elif (move == 1):
-		$game/Label4.text = "Rock"
-		$game/Label5.text = "Loss"
-		wins += global.lossAmount * global.lossMult + chainWin
-		chainWin = 0
+		if global.lossToTieChance > 0:
+			var chance = rng.randi_range(1, 10)
+			if chance <= global.lossToTieChance:
+				$game/Label4.text = "Rock"
+				$game/Label5.text = "Loss -> Tie"
+				wins += global.tieAmount * global.winMult
+				chainWin = 0
+		else:
+			$game/Label4.text = "Rock"
+			$game/Label5.text = "Loss"
+			wins += global.lossAmount * global.lossMult + chainWin
+			chainWin = 0
 	elif (move == 2):
 		$game/Label4.text = "Paper"
 		$game/Label5.text = "Win!"
@@ -133,9 +175,18 @@ func _on_button_3_pressed() -> void:
 		if global.chainBonus:
 			chainWin += 1
 	else:
-		$game/Label4.text = "Scissors"
-		$game/Label5.text = "Tie"
-		wins += global.tieAmount * global.winMult
-		chainWin = 0
+		if global.tieToWinChance > 0:
+			var chance = rng.randi_range(1, 10)
+			if chance <= global.tieToWinChance:
+				$game/Label4.text = "Paper"
+				$game/Label5.text = "Tie -> Win!"
+				wins += global.winAmount * global.winMult + chainWin
+				if global.chainBonus:
+					chainWin += 1
+		else:
+			$game/Label4.text = "Scissors"
+			$game/Label5.text = "Tie"
+			wins += global.tieAmount * global.winMult
+			chainWin = 0
 	update_wins()
 	pause_one_sec()
