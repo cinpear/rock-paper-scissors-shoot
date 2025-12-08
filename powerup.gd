@@ -20,10 +20,10 @@ func _on_visibility_changed() -> void:
 			for i in range(len(global.powerupBought)):
 				if global.powerupBought[i] == false:
 					if powerup[0] == 10:
-						$HBoxContainer/Button.text = str(i)
+						$HBoxContainer/Button.text = str(i) + "\n" + global.powerupAbility[i]
 						powerup[0] = i
 					else:
-						$HBoxContainer/Button2.text = str(i)
+						$HBoxContainer/Button2.text = str(i) + "\n" + global.powerupAbility[i]
 						powerup[1] = i
 		elif (global.numPowerup == 8):
 			$HBoxContainer/Button3.disabled = true
@@ -32,7 +32,7 @@ func _on_visibility_changed() -> void:
 			$HBoxContainer/Button2/ColorRect.visible = false
 			for i in range(len(global.powerupBought)):
 				if global.powerupBought[i] == false:
-					$HBoxContainer/Button.text = str(i)
+					$HBoxContainer/Button.text = str(i) + "\n" + global.powerupAbility[i]
 					powerup[0] = i
 		else:
 			while powerup[2] == 10:
@@ -40,15 +40,15 @@ func _on_visibility_changed() -> void:
 				if global.powerupBought[rand] == false:
 					if powerup[0] == 10:
 						powerup[0] = rand
-						$HBoxContainer/Button.text = str(rand)
+						$HBoxContainer/Button.text = str(rand) + "\n" + global.powerupAbility[rand]
 						global.powerupBought[rand] = true
 					elif powerup[1] == 10:
 						powerup[1] = rand
-						$HBoxContainer/Button2.text = str(rand)
+						$HBoxContainer/Button2.text = str(rand) + "\n" + global.powerupAbility[rand]
 						global.powerupBought[rand] = true
 					else:
 						powerup[2] = rand
-						$HBoxContainer/Button3.text = str(rand)
+						$HBoxContainer/Button3.text = str(rand) + "\n" + global.powerupAbility[rand]
 						global.powerupBought[rand] = true
 						
 					
