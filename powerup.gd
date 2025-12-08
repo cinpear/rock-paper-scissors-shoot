@@ -70,15 +70,17 @@ func addPowerup(num):
 	elif num == 1:
 		global.lossAmount = -0.5
 	elif num == 2:
-		# chain bonus
+		global.chainBonus = true
 		pass
 	elif num == 3:
 		global.gunChance = 10
 	elif num == 4:
 		# +20% chance to make a loss a tie
+		global.lossToTieChance = 2
 		pass
 	elif num == 5:
 		# +10% chance to make a tie a win
+		global.tieToWinChance = 1
 		pass
 	elif num == 6:
 		global.winMult = 2.0

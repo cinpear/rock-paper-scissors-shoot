@@ -5,6 +5,7 @@ var wins = 0.0
 var nextPowerup = [2, 4, 6, 8, 10, 12, 14, 16, 18]
 # var nextPowerup = [10, 20, 30, 40, 60, 80, 160, 320, 640]
 var nextPowerupIndex = 0
+var chainWin = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,22 +57,28 @@ func _on_button_pressed() -> void:
 	if (gun <= global.gunChance):
 		$game/Label4.text = "Gun! 🔫"
 		$game/Label5.text = "Win!"
-		wins += 2.0
+		wins += 2.0 * global.winMult + chainWin
+		if global.chainBonus:
+			chainWin += 1
 	# rock
 	elif (move == 1):
 		$game/Label4.text = "Rock"
 		$game/Label5.text = "Tie"
-		wins += global.tieAmount
+		wins += global.tieAmount * global.winMult
+		chainWin = 0
 	# paper
 	elif (move == 2):
 		$game/Label4.text = "Paper"
 		$game/Label5.text = "Loss"
-		wins += global.lossAmount
+		wins += global.lossAmount * global.lossMult
+		chainWin = 0
 	# scissors
 	else:
 		$game/Label4.text = "Scissors"
 		$game/Label5.text = "Win!"
-		wins += global.winAmount
+		wins += global.winAmount * global.winMult + chainWin
+		if global.chainBonus:
+			chainWin += 1
 	update_wins()
 	pause_one_sec()
 
@@ -82,19 +89,25 @@ func _on_button_2_pressed() -> void:
 	if (gun <= global.gunChance):
 		$game/Label4.text = "Gun! 🔫"
 		$game/Label5.text = "Win!"
-		wins += global.winAmount
+		wins += global.winAmount * global.winMult + chainWin
+		if global.chainBonus:
+			chainWin += 1
 	elif (move == 1):
 		$game/Label4.text = "Rock"
 		$game/Label5.text = "Win!"
-		wins += global.winAmount
+		wins += global.winAmount * global.winMult + chainWin
+		if global.chainBonus:
+			chainWin += 1
 	elif (move == 2):
 		$game/Label4.text = "Paper"
 		$game/Label5.text = "Tie"
-		wins += global.tieAmount
+		wins += global.tieAmount * global.winMult
+		chainWin = 0
 	else:
 		$game/Label4.text = "Scissors"
 		$game/Label5.text = "Loss"
-		wins += global.lossAmount
+		wins += global.lossAmount * global.lossMult
+		chainWin = 0
 	update_wins()
 	pause_one_sec()
 
@@ -105,18 +118,24 @@ func _on_button_3_pressed() -> void:
 	if (gun <= global.gunChance):
 		$game/Label4.text = "Gun! 🔫"
 		$game/Label5.text = "Win!"
-		wins += global.winAmount
+		wins += global.winAmount * global.winMult + chainWin
+		if global.chainBonus:
+			chainWin += 1
 	elif (move == 1):
 		$game/Label4.text = "Rock"
 		$game/Label5.text = "Loss"
-		wins += global.lossAmount
+		wins += global.lossAmount * global.lossMult + chainWin
+		chainWin = 0
 	elif (move == 2):
 		$game/Label4.text = "Paper"
 		$game/Label5.text = "Win!"
-		wins += global.winAmount
+		wins += global.winAmount * global.winMult + chainWin
+		if global.chainBonus:
+			chainWin += 1
 	else:
 		$game/Label4.text = "Scissors"
 		$game/Label5.text = "Tie"
-		wins += global.tieAmount
+		wins += global.tieAmount * global.winMult
+		chainWin = 0
 	update_wins()
 	pause_one_sec()

@@ -9,6 +9,9 @@ var winMult = 1.0
 var gunChance = 100
 var numPowerup = 0
 var waitTime = 1
+var chainBonus = false
+var lossToTieChance = 0
+var tieToWinChance = 0
 
 var powerupAbility = [
 	"Tie = +1 win",
