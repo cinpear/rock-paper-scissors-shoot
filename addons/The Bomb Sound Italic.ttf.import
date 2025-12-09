@@ -1,0 +1,34 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://b2ukv27mx647y"
+path="res://.godot/imported/The Bomb Sound Italic.ttf-76e2ce70db6bd0696d4c01915b0d6d45.fontdata"
+
+[deps]
+
+source_file="res://addons/The Bomb Sound Italic.ttf"
+dest_files=["res://.godot/imported/The Bomb Sound Italic.ttf-76e2ce70db6bd0696d4c01915b0d6d45.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
