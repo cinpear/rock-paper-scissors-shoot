@@ -57,6 +57,8 @@ func update_win_labels(num):
 	else:
 		$game/updateLabel.text = "+" + str(num) + " wins"
 	$game/updateLabel/AnimationPlayer.play("winUpdate")
+	if global.chainBonus:
+		$game/chainLabel.text = "Chain: " + str(chainWin)
 
 # Chose rock
 func _on_button_pressed() -> void:

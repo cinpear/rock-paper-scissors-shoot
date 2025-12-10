@@ -71,6 +71,7 @@ func addPowerup(num):
 		global.lossAmount = -0.5
 	elif num == 2:
 		global.chainBonus = true
+		$"../game/chainLabel".visible = true
 		pass
 	elif num == 3:
 		global.gunChance = 10

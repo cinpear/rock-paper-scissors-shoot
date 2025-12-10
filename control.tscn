@@ -136,29 +136,29 @@ offset_bottom = 995.0
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_v714o")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 65
 text = "Rock"
 
 [node name="Button2" type="Button" parent="game/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_v714o")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 65
 text = "Paper"
 
 [node name="Button3" type="Button" parent="game/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_v714o")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 65
 text = "Scissors"
 
 [node name="updateLabel" type="Label" parent="game"]
 layout_mode = 0
 offset_left = 150.0
-offset_top = 85.0
+offset_top = 152.0
 offset_right = 381.0
-offset_bottom = 144.0
+offset_bottom = 211.0
 theme_override_fonts/font = ExtResource("2_v714o")
 theme_override_font_sizes/font_size = 50
 text = "+10 wins"
@@ -186,10 +186,10 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="game"]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 152.0
-offset_right = 489.0
-offset_bottom = 240.0
+offset_left = 30.0
+offset_top = 156.0
+offset_right = 455.0
+offset_bottom = 244.0
 theme_override_fonts/font = ExtResource("2_v714o")
 theme_override_font_sizes/font_size = 90
 text = "Wins: 0"
@@ -198,12 +198,12 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="game"]
 layout_mode = 0
-offset_left = 1489.0
-offset_top = 48.0
-offset_right = 1866.0
-offset_bottom = 413.0
+offset_left = 1492.0
+offset_top = 59.0
+offset_right = 1869.0
+offset_bottom = 512.0
 theme_override_fonts/font = ExtResource("2_v714o")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 75
 text = "Pick your move!
 
 Goal: Reach 1000 wins"
@@ -211,16 +211,28 @@ autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="game"]
 layout_mode = 0
-offset_left = 1458.0
-offset_top = 843.0
-offset_right = 1894.0
-offset_bottom = 984.0
+offset_left = 35.0
+offset_top = 868.0
+offset_right = 471.0
+offset_bottom = 1009.0
 theme_override_fonts/font = ExtResource("2_v714o")
 theme_override_font_sizes/font_size = 50
 text = "Next Power Up: 10 wins"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="chainLabel" type="Label" parent="game"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 242.0
+offset_right = 384.0
+offset_bottom = 335.0
+theme_override_fonts/font = ExtResource("2_v714o")
+theme_override_font_sizes/font_size = 60
+text = "Chain: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
