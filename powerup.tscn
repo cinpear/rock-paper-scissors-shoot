@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c222tr58xaie0"]
+[gd_scene load_steps=3 format=3 uid="uid://c222tr58xaie0"]
 
 [ext_resource type="Script" path="res://powerup.gd" id="1_s4k80"]
+[ext_resource type="FontFile" uid="uid://b2ukv27mx647y" path="res://addons/The Bomb Sound Italic.ttf" id="2_d6dq0"]
 
 [node name="powerup" type="Control"]
 layout_mode = 3
@@ -27,6 +28,7 @@ clip_text = true
 
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer/Button"]
 show_behind_parent = true
+use_parent_material = true
 clip_contents = true
 layout_mode = 0
 offset_right = 326.0
@@ -46,6 +48,7 @@ clip_text = true
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer/Button2"]
 show_behind_parent = true
 visibility_layer = 2
+use_parent_material = true
 clip_contents = true
 layout_mode = 0
 offset_right = 326.0
@@ -65,6 +68,7 @@ clip_text = true
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer/Button3"]
 show_behind_parent = true
 visibility_layer = 2
+use_parent_material = true
 clip_contents = true
 layout_mode = 0
 offset_right = 326.0
@@ -73,11 +77,12 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 670.0
-offset_top = 167.0
-offset_right = 1227.0
-offset_bottom = 250.0
-theme_override_font_sizes/font_size = 60
+offset_left = 620.0
+offset_top = 176.0
+offset_right = 1271.0
+offset_bottom = 259.0
+theme_override_fonts/font = ExtResource("2_d6dq0")
+theme_override_font_sizes/font_size = 75
 text = "Pick your powerup!"
 horizontal_alignment = 1
 vertical_alignment = 1
