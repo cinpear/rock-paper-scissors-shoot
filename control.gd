@@ -189,7 +189,7 @@ func _on_button_2_pressed() -> void:
 	else:
 		if global.lossToTieChance > 0:
 			var chance = rng.randi_range(1, 10)
-			if chance <= global.laossToTieChance:
+			if chance <= global.lossToTieChance:
 				$game/Label4.text = "Scissors"
 				$game/Label5.text = "Loss -> Tie"
 				roundWin = global.tieAmount * global.winMult
