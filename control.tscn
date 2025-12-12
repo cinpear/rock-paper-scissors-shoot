@@ -1,18 +1,114 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7pfh5uv4qil7"]
+[gd_scene load_steps=16 format=3 uid="uid://b7pfh5uv4qil7"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_l3qlv"]
 [ext_resource type="PackedScene" uid="uid://c222tr58xaie0" path="res://powerup.tscn" id="2_p1klo"]
 [ext_resource type="FontFile" uid="uid://b2ukv27mx647y" path="res://addons/The Bomb Sound Italic.ttf" id="2_v714o"]
 [ext_resource type="Texture2D" uid="uid://djax4nm55jnr7" path="res://rock.png" id="3_dno51"]
+[ext_resource type="Texture2D" uid="uid://cdepy847ff3g1" path="res://back.png" id="3_qjxwm"]
 [ext_resource type="Texture2D" uid="uid://bvaoxwf4vdq2m" path="res://paper.png" id="4_lkisw"]
+[ext_resource type="Texture2D" uid="uid://c505nf0npb2ew" path="res://redRock.png" id="4_y6uon"]
 [ext_resource type="Texture2D" uid="uid://c4kme61o5n4l6" path="res://scissors.png" id="5_6rrbt"]
 
-[sub_resource type="Gradient" id="Gradient_8e3ci"]
-offsets = PackedFloat32Array(0, 0.00909091, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.227273, 0.227273, 0.227273, 1, 1, 1, 1, 1)
+[sub_resource type="SpriteFrames" id="SpriteFrames_07cno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y6uon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lkisw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6rrbt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_hvjki"]
-gradient = SubResource("Gradient_8e3ci")
+[sub_resource type="Animation" id="Animation_cduwm"]
+resource_name = "cardFlip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../cardBack:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.233333, 0.366667, 0.5, 0.633333, 0.966667),
+"transitions": PackedFloat32Array(1, 2.21914, 5.09824, 0.120742, 1.10957),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 1), Vector2(0.05, 1), Vector2(0.01, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../cardBack/chosenCard:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, -5.09824),
+"update": 1,
+"values": [-1, -1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("../cardBack:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.866667, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ku418"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../cardBack:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../cardBack/chosenCard:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../cardBack:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1moit"]
+_data = {
+"RESET": SubResource("Animation_ku418"),
+"cardFlip": SubResource("Animation_cduwm")
+}
 
 [sub_resource type="Animation" id="Animation_jabyt"]
 length = 0.001
@@ -119,12 +215,27 @@ theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="cardBack" type="Sprite2D" parent="game"]
+position = Vector2(990, 304)
+texture = ExtResource("3_qjxwm")
+
+[node name="chosenCard" type="AnimatedSprite2D" parent="game/cardBack"]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_07cno")
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="game"]
+root_node = NodePath("../Label4")
+libraries = {
+"": SubResource("AnimationLibrary_1moit")
+}
+
 [node name="Label4" type="Label" parent="game"]
 layout_mode = 0
-offset_left = 798.0
-offset_top = 123.0
-offset_right = 1115.0
-offset_bottom = 537.0
+offset_left = 828.0
+offset_top = 120.0
+offset_right = 1145.0
+offset_bottom = 534.0
 theme_override_fonts/font = ExtResource("2_v714o")
 theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
@@ -147,35 +258,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 action_mode = 0
 texture_normal = ExtResource("3_dno51")
-texture_disabled = SubResource("GradientTexture1D_hvjki")
-
-[node name="Sprite2D" type="Sprite2D" parent="game/HBoxContainer/Button"]
-visible = false
-scale = Vector2(0.923547, 0.923547)
-texture = ExtResource("3_dno51")
-centered = false
 
 [node name="Button2" type="TextureButton" parent="game/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("4_lkisw")
 
-[node name="Sprite2D" type="Sprite2D" parent="game/HBoxContainer/Button2"]
-visible = false
-scale = Vector2(0.926605, 0.926605)
-texture = ExtResource("4_lkisw")
-centered = false
-
 [node name="Button3" type="TextureButton" parent="game/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("5_6rrbt")
-
-[node name="Sprite2D" type="Sprite2D" parent="game/HBoxContainer/Button3"]
-visible = false
-scale = Vector2(0.923547, 0.923547)
-texture = ExtResource("5_6rrbt")
-centered = false
 
 [node name="updateLabel" type="Label" parent="game"]
 layout_mode = 0
