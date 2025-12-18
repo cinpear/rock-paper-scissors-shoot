@@ -1,69 +1,32 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7pfh5uv4qil7"]
+[gd_scene load_steps=18 format=3 uid="uid://b7pfh5uv4qil7"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_l3qlv"]
 [ext_resource type="PackedScene" uid="uid://c222tr58xaie0" path="res://powerup.tscn" id="2_p1klo"]
 [ext_resource type="FontFile" uid="uid://b2ukv27mx647y" path="res://addons/The Bomb Sound Italic.ttf" id="2_v714o"]
-[ext_resource type="Texture2D" uid="uid://djax4nm55jnr7" path="res://rock.png" id="3_dno51"]
-[ext_resource type="Texture2D" uid="uid://cdepy847ff3g1" path="res://back.png" id="3_qjxwm"]
-[ext_resource type="Texture2D" uid="uid://bvaoxwf4vdq2m" path="res://paper.png" id="4_lkisw"]
-[ext_resource type="Texture2D" uid="uid://c505nf0npb2ew" path="res://redRock.png" id="4_y6uon"]
-[ext_resource type="Texture2D" uid="uid://c4kme61o5n4l6" path="res://scissors.png" id="5_6rrbt"]
+[ext_resource type="Texture2D" uid="uid://dp17iq03xpqrt" path="res://powerupBack.png" id="3_311i2"]
+[ext_resource type="Texture2D" uid="uid://c2fd6v26va1fc" path="res://oppRock.png" id="4_pv07j"]
+[ext_resource type="Texture2D" uid="uid://c11ddlilju7cs" path="res://oppPaper.png" id="5_suv41"]
+[ext_resource type="Texture2D" uid="uid://bt5xxumicwv65" path="res://oppScissors.png" id="6_pl38g"]
+[ext_resource type="Texture2D" uid="uid://po35tjqrwgel" path="res://playerRock.png" id="7_yc8r7"]
+[ext_resource type="Texture2D" uid="uid://bqpxdtum55epw" path="res://playerPaper.png" id="8_dq0wh"]
+[ext_resource type="Texture2D" uid="uid://dw6cosvbvvt7i" path="res://playerScissors.png" id="9_txr40"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_07cno"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_y6uon")
+"texture": ExtResource("4_pv07j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_lkisw")
+"texture": ExtResource("5_suv41")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_6rrbt")
+"texture": ExtResource("6_pl38g")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="Animation" id="Animation_cduwm"]
-resource_name = "cardFlip"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../cardBack:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.233333, 0.366667, 0.5, 0.633333, 0.966667),
-"transitions": PackedFloat32Array(1, 2.21914, 5.09824, 0.120742, 1.10957),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.1, 1), Vector2(0.05, 1), Vector2(0.01, 1), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../cardBack/chosenCard:z_index")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.466667, 0.566667),
-"transitions": PackedFloat32Array(1, 1, -5.09824),
-"update": 1,
-"values": [-1, -1, 0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("../cardBack:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.866667, 0.966667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, true, true, false]
-}
 
 [sub_resource type="Animation" id="Animation_ku418"]
 length = 0.001
@@ -102,6 +65,45 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cduwm"]
+resource_name = "cardFlip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../cardBack:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.233333, 0.366667, 0.5, 0.633333, 0.966667),
+"transitions": PackedFloat32Array(1, 2.21914, 5.09824, 0.120742, 1.10957),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 1), Vector2(0.05, 1), Vector2(0.01, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../cardBack/chosenCard:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, -5.09824),
+"update": 1,
+"values": [-1, -1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("../cardBack:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.866667, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1moit"]
@@ -216,8 +218,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="cardBack" type="Sprite2D" parent="game"]
+visible = false
 position = Vector2(990, 304)
-texture = ExtResource("3_qjxwm")
+texture = ExtResource("3_311i2")
 
 [node name="chosenCard" type="AnimatedSprite2D" parent="game/cardBack"]
 z_index = -1
@@ -225,6 +228,7 @@ sprite_frames = SubResource("SpriteFrames_07cno")
 frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="game"]
+active = false
 root_node = NodePath("../Label4")
 libraries = {
 "": SubResource("AnimationLibrary_1moit")
@@ -232,9 +236,9 @@ libraries = {
 
 [node name="Label4" type="Label" parent="game"]
 layout_mode = 0
-offset_left = 828.0
+offset_left = 802.0
 offset_top = 120.0
-offset_right = 1145.0
+offset_right = 1118.0
 offset_bottom = 534.0
 theme_override_fonts/font = ExtResource("2_v714o")
 theme_override_font_sizes/font_size = 40
@@ -242,32 +246,28 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="game"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 475.0
-offset_top = 588.0
-offset_right = 1404.0
-offset_bottom = 995.0
+layout_mode = 0
+offset_left = 466.0
+offset_top = 608.0
+offset_right = 1454.0
+offset_bottom = 1029.0
+alignment = 1
 
 [node name="Button" type="TextureButton" parent="game/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 action_mode = 0
-texture_normal = ExtResource("3_dno51")
+texture_normal = ExtResource("7_yc8r7")
 
 [node name="Button2" type="TextureButton" parent="game/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("4_lkisw")
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_dq0wh")
 
 [node name="Button3" type="TextureButton" parent="game/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("5_6rrbt")
+size_flags_horizontal = 6
+texture_normal = ExtResource("9_txr40")
 
 [node name="updateLabel" type="Label" parent="game"]
 layout_mode = 0

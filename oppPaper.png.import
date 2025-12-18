@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djax4nm55jnr7"
-path="res://.godot/imported/rock.png-2fd843802c09e25179696ea826da5ac7.ctex"
+uid="uid://c11ddlilju7cs"
+path="res://.godot/imported/oppPaper.png-50d8afdcbbffd05ae2af10246484b67d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rock.png"
-dest_files=["res://.godot/imported/rock.png-2fd843802c09e25179696ea826da5ac7.ctex"]
+source_file="res://oppPaper.png"
+dest_files=["res://.godot/imported/oppPaper.png-50d8afdcbbffd05ae2af10246484b67d.ctex"]
 
 [params]
 

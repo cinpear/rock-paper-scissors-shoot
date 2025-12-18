@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvaoxwf4vdq2m"
-path="res://.godot/imported/paper.png-7786f1cec57caf764293039fee58b648.ctex"
+uid="uid://dw6cosvbvvt7i"
+path="res://.godot/imported/playerScissors.png-205eeb5fe9c0773a1c80267e6ff59697.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://paper.png"
-dest_files=["res://.godot/imported/paper.png-7786f1cec57caf764293039fee58b648.ctex"]
+source_file="res://playerScissors.png"
+dest_files=["res://.godot/imported/playerScissors.png-205eeb5fe9c0773a1c80267e6ff59697.ctex"]
 
 [params]
 
