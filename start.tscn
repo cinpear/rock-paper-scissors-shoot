@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciul7j3omlbf6"]
+
+[ext_resource type="Script" path="res://start.gd" id="1_8swwh"]
+[ext_resource type="FontFile" uid="uid://b2ukv27mx647y" path="res://addons/The Bomb Sound Italic.ttf" id="1_v4535"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8swwh")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 415.0
+offset_top = 745.0
+offset_right = 1597.0
+offset_bottom = 951.0
+pivot_offset = Vector2(591, 103)
+theme_override_fonts/font = ExtResource("1_v4535")
+theme_override_font_sizes/font_size = 100
+text = "Start Game
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
