@@ -10,7 +10,7 @@ var chainWin = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$game/updateLabel/AnimationPlayer.stop(true)
-	$game/AnimationPlayer.stop(true)
+	# $game/Label5/AnimationPlayer.stop(true)
 	# play_animation(0)
 	pass # Replace with function body.
 
@@ -62,7 +62,17 @@ func update_win_labels(num):
 	if global.chainBonus:
 		$game/chainLabel.text = "Chain: " + str(chainWin)
 
+func showResultAnim():
+	$game/Label5/AnimationPlayer.play("RESET")
+	$game/Label5/AnimationPlayer.play("showResult")
+
 func play_animation(frame):
+	if frame == 0:
+		$game/Label4.text = "Rock"
+	elif frame == 1:
+		$game/Label4.text = "Paper"
+	else:
+		$game/Label4.text = "Scissors"
 	$game/cardBack/chosenCard.frame = frame
 	$game/AnimationPlayer.play("cardFlip")
 
@@ -73,9 +83,10 @@ func _on_button_pressed() -> void:
 	var gun = rng.randi_range(1, 100)
 	var roundWin = 0
 	if (gun <= global.gunChance):
-		$game/Label4.text = "Gun! 🔫"
+		# $game/Label4.text = "Gun! 🔫"
 		play_animation(2)
-		$game/Label5.text = "Win!"
+		$game/Label5.text = "You got a gun! You win!"
+		showResultAnim()
 		roundWin = global.winAmount * global.winMult + chainWin
 		update_win_labels(roundWin)
 		wins += roundWin
@@ -89,6 +100,7 @@ func _on_button_pressed() -> void:
 				# $game/Label4.text = "Scissors"
 				play_animation(2)
 				$game/Label5.text = "Tie -> Win!"
+				showResultAnim()
 				roundWin = global.winAmount * global.winMult + chainWin
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -98,6 +110,7 @@ func _on_button_pressed() -> void:
 				# $game/Label4.text = "Rock"
 				play_animation(0)
 				$game/Label5.text = "Tie"
+				showResultAnim()
 				roundWin = global.tieAmount * global.winMult
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -107,6 +120,7 @@ func _on_button_pressed() -> void:
 			# $game/Label4.text = "Rock"
 			play_animation(0)
 			$game/Label5.text = "Tie"
+			showResultAnim()
 			roundWin = global.tieAmount * global.winMult
 			update_win_labels(roundWin)
 			wins += roundWin
@@ -120,6 +134,7 @@ func _on_button_pressed() -> void:
 				# $game/Label4.text = "Paper"
 				play_animation(1)
 				$game/Label5.text = "Loss -> Tie"
+				showResultAnim()
 				roundWin = global.tieAmount * global.winMult
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -128,6 +143,7 @@ func _on_button_pressed() -> void:
 				# $game/Label4.text = "Paper"
 				play_animation(1)
 				$game/Label5.text = "Loss"
+				showResultAnim()
 				roundWin = global.lossAmount * global.lossMult
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -136,6 +152,7 @@ func _on_button_pressed() -> void:
 			# $game/Label4.text = "Paper"
 			play_animation(1)
 			$game/Label5.text = "Loss"
+			showResultAnim()
 			roundWin = global.lossAmount * global.lossMult
 			update_win_labels(roundWin)
 			wins += roundWin
@@ -146,6 +163,7 @@ func _on_button_pressed() -> void:
 		# $game/Label4.text = "Scissors"
 		play_animation(2)
 		$game/Label5.text = "Win!"
+		showResultAnim()
 		roundWin = global.winAmount * global.winMult + chainWin
 		update_win_labels(roundWin)
 		wins += roundWin
@@ -160,9 +178,10 @@ func _on_button_2_pressed() -> void:
 	var gun = rng.randi_range(1, 100)
 	var roundWin = 0
 	if (gun <= global.gunChance):
-		$game/Label4.text = "Gun! 🔫"
+		# $game/Label4.text = "Gun! 🔫"
 		play_animation(0)
-		$game/Label5.text = "Win!"
+		$game/Label5.text = "You got a gun! You win!"
+		showResultAnim()
 		roundWin = global.winAmount * global.winMult + chainWin
 		update_win_labels(roundWin)
 		wins += roundWin
@@ -172,6 +191,7 @@ func _on_button_2_pressed() -> void:
 		# $game/Label4.text = "Rock"
 		play_animation(0)
 		$game/Label5.text = "Win!"
+		showResultAnim()
 		roundWin = global.winAmount * global.winMult + chainWin
 		update_win_labels(roundWin)
 		wins += roundWin
@@ -184,6 +204,7 @@ func _on_button_2_pressed() -> void:
 				# $game/Label4.text = "Paper"
 				play_animation(1)
 				$game/Label5.text = "Tie -> Win!"
+				showResultAnim()
 				roundWin = global.winAmount * global.winMult + chainWin
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -193,6 +214,7 @@ func _on_button_2_pressed() -> void:
 				# $game/Label4.text = "Paper"
 				play_animation(1)
 				$game/Label5.text = "Tie"
+				showResultAnim()
 				roundWin = global.tieAmount * global.winMult
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -201,6 +223,7 @@ func _on_button_2_pressed() -> void:
 			# $game/Label4.text = "Paper"
 			play_animation(1)
 			$game/Label5.text = "Tie"
+			showResultAnim()
 			roundWin = global.tieAmount * global.winMult
 			update_win_labels(roundWin)
 			wins += roundWin
@@ -212,6 +235,7 @@ func _on_button_2_pressed() -> void:
 				# $game/Label4.text = "Scissors"
 				play_animation(2)
 				$game/Label5.text = "Loss -> Tie"
+				showResultAnim()
 				roundWin = global.tieAmount * global.winMult
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -220,6 +244,7 @@ func _on_button_2_pressed() -> void:
 				# $game/Label4.text = "Scissors"
 				play_animation(2)
 				$game/Label5.text = "Loss"
+				showResultAnim()
 				roundWin = global.lossAmount * global.lossMult
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -228,6 +253,7 @@ func _on_button_2_pressed() -> void:
 			# $game/Label4.text = "Scissors"
 			play_animation(2)
 			$game/Label5.text = "Loss"
+			showResultAnim()
 			roundWin = global.lossAmount * global.lossMult
 			update_win_labels(roundWin)
 			wins += roundWin
@@ -241,9 +267,10 @@ func _on_button_3_pressed() -> void:
 	var gun = rng.randi_range(1, 100)
 	var roundWin = 0
 	if (gun <= global.gunChance):
-		$game/Label4.text = "Gun! 🔫"
+		# $game/Label4.text = "Gun! 🔫"
 		play_animation(1)
-		$game/Label5.text = "Win!"
+		$game/Label5.text = "You got a gun! You win!"
+		showResultAnim()
 		roundWin = global.winAmount * global.winMult + chainWin
 		update_win_labels(roundWin)
 		wins += roundWin
@@ -256,6 +283,7 @@ func _on_button_3_pressed() -> void:
 				# $game/Label4.text = "Rock"
 				play_animation(0)
 				$game/Label5.text = "Loss -> Tie"
+				showResultAnim()
 				roundWin = global.tieAmount * global.winMult
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -264,6 +292,7 @@ func _on_button_3_pressed() -> void:
 			# $game/Label4.text = "Rock"
 			play_animation(0)
 			$game/Label5.text = "Loss"
+			showResultAnim()
 			roundWin = global.lossAmount * global.lossMult
 			update_win_labels(roundWin)
 			wins += roundWin
@@ -272,6 +301,7 @@ func _on_button_3_pressed() -> void:
 		# $game/Label4.text = "Paper"
 		play_animation(1)
 		$game/Label5.text = "Win!"
+		showResultAnim()
 		roundWin = global.winAmount * global.winMult + chainWin
 		update_win_labels(roundWin)
 		wins += roundWin
@@ -284,6 +314,7 @@ func _on_button_3_pressed() -> void:
 				# $game/Label4.text = "Paper"
 				play_animation(1)
 				$game/Label5.text = "Tie -> Win!"
+				showResultAnim()
 				roundWin = global.winAmount * global.winMult + chainWin
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -293,6 +324,7 @@ func _on_button_3_pressed() -> void:
 				# $game/Label4.text = "Scissors"
 				play_animation(2)
 				$game/Label5.text = "Tie"
+				showResultAnim()
 				roundWin = global.tieAmount * global.winMult
 				update_win_labels(roundWin)
 				wins += roundWin
@@ -302,6 +334,7 @@ func _on_button_3_pressed() -> void:
 			# $game/Label4.text = "Scissors"
 			play_animation(2)
 			$game/Label5.text = "Tie"
+			showResultAnim()
 			roundWin = global.tieAmount * global.winMult
 			update_win_labels(roundWin)
 			wins += roundWin
