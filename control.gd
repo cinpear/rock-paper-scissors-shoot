@@ -9,7 +9,14 @@ var chainWin = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# set everything to not visible at the start
+	# painge
+	# will do tomorrow, i think...
 	$game/updateLabel/AnimationPlayer.stop(true)
+	$game/Label3/AnimationPlayer.play("slideInLeft")
+	$game/AnimationPlayer2.play("slideInTop")
+	$game/Label2/AnimationPlayer.play("slideInRight")
+	$game/HBoxContainer/AnimationPlayer.play("slideInBottom")
 	# $game/Label5/AnimationPlayer.stop(true)
 	# play_animation(0)
 	pass # Replace with function body.
