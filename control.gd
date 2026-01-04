@@ -12,6 +12,7 @@ func _ready() -> void:
 	# set everything to not visible at the start
 	# painge
 	# will do tomorrow, i think...
+	# could animate each card popping up separately...
 	$game/updateLabel/AnimationPlayer.stop(true)
 	$game/Label3/AnimationPlayer.play("slideInLeft")
 	$game/AnimationPlayer2.play("slideInTop")
