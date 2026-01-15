@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ciul7j3omlbf6"]
 
-[ext_resource type="Script" path="res://start.gd" id="1_8swwh"]
+[ext_resource type="Script" uid="uid://bbix2a3ub7g0e" path="res://start.gd" id="1_8swwh"]
 [ext_resource type="FontFile" uid="uid://b2ukv27mx647y" path="res://addons/The Bomb Sound Italic.ttf" id="1_v4535"]
 
 [node name="Node2D" type="Node2D"]

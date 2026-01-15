@@ -81,8 +81,10 @@ func play_animation(frame):
 		$game/Label4.text = "Paper"
 	else:
 		$game/Label4.text = "Scissors"
-	$game/cardBack/chosenCard.frame = frame
-	$game/AnimationPlayer.play("cardFlip")
+	if $game/chosenCard.visible == false:
+		$game/chosenCard.visible = true
+	$game/chosenCard.frame = frame
+	# $game/AnimationPlayer.play("cardFlip")
 
 # Chose rock
 func _on_button_pressed() -> void:
